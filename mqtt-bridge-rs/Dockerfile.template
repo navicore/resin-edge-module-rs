@@ -56,8 +56,8 @@ FROM base
 
 # Copy binary from builder image
 WORKDIR /app
-COPY --from=builder /build/app/target/release/mqtt-bridge-rs .
-COPY --from=builder /build/app/config config/
+COPY --from=builder /build/app/mqtt-bridge-rs/target/release/mqtt-bridge-rs .
+COPY --from=builder /build/app/mqtt-bridge-rs/config config/
 
 # Launch application
 CMD ["/app/mqtt-bridge-rs"]
