@@ -26,7 +26,7 @@ RUN apt-get -q update && apt-get install -yq --no-install-recommends build-essen
 
 ENV PATH=/root/.cargo/bin:$PATH
 
-RUN echo 'if [ "%%RESIN_MACHINE_NAME%%" = "raspberry-pi" ]; then echo "arm6l"; else echo "arm7l"; fi;' > `which uname`
+RUN cp `which uname` /bin/uname-orig && echo 'if [[ $1 == "-m" ]]; then if [[ "%%RESIN_MACHINE_NAME%%" == "raspberry-pi" ]]; then echo "arm6l"; else echo "arm7l"; fi; else /bin/uname-orig $@; fi;' > `which uname`
 
 # Install specific version of Rust (see ARG)
 RUN curl -sSf https://static.rust-lang.org/rustup.sh | sh -s -- -y --revision=${rust_revision}
