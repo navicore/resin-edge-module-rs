@@ -9,6 +9,9 @@ ARG rust_revision="1.28.0"
 
 FROM resin/%%RESIN_MACHINE_NAME%%-debian as base
 
+# use this in the arm6l vs arm7l vs arm8l issue below
+RUN echo "arch is %%RESIN_MACHINE_NAME%%"
+
 ENV INITSYSTEM=on
 ENV DEBIAN_FRONTEND=noninteractive
 
