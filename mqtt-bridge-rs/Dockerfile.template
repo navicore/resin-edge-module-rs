@@ -40,7 +40,7 @@ ENV OPENSSL_DIR=/usr
 
 # Build real app
 WORKDIR /build/app
-RUN git clone https://github.com/navicore/mqtt-bridge-rs.git && cd mqtt-bridge-rs && git checkout tags/0.9.1 && cargo build --release
+RUN git clone https://github.com/navicore/mqtt-bridge-rs.git && cd mqtt-bridge-rs && git checkout tags/0.9.2 && cargo build --release
 
 ################################################################################
 # Final image
